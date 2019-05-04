@@ -17,7 +17,7 @@ else
   then
     echo "\033[1;33m[\033[0m"
     git remote "-v"
-    git ls-files
+    # git ls-files
     echo "\033[1;33m]\033[0m"
     echo "\033[1;33mTo markdown branch\033[0m"
     git push origin md
