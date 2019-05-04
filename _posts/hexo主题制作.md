@@ -1,6 +1,6 @@
 ---
 title: hexo主题制作
-updated: 1556939087
+updated: 1556970750
 date: 2019-05-02 17:24:56
 tags:
  - hexo
@@ -40,11 +40,13 @@ tags:
 
 - [iterator遍历](https://www.jb51.net/article/70106.htm)
 
-## 脚本
+## 插件
 
 ### 本地搜索功能
 
 使用google的api
+
+> npm不知道到底需不需要
 
 - 原插件搜索到的文章链接解码:
 
@@ -57,6 +59,10 @@ str += "<li><a href='" + unescape(decodeURI(data_url)) + "' class='search-result
 js:`blog/node_modules/hexo-generator-index/`
 
 配置:`blog/_config.yml`
+
+## js
+
+- 全页长度: `document.body.scrollHeight`
 
 ## 其他
 
@@ -72,6 +78,15 @@ js:`blog/node_modules/hexo-generator-index/`
 
 - [教程参考](https://segmentfault.com/a/1190000008040387)
 - [辅助函数](https://www.jianshu.com/p/81ea81d291fd)
+
+### 向javascript传参
+
+```html
+<script>
+  var cur_page = '<%= page.current%> / <%= page.total%>';
+</script>
+<%- js('js/paginator') %>
+```
 
 ## tag
 
