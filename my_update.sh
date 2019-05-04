@@ -14,15 +14,16 @@ else
   echo "\033[1;33mPushing...\033[0m"
   if [ "$2"x != x ]
   then
-    sleep 1
-    echo "\033[1;33mBut you don't have any branch\033[0m"
     echo "\033[1;33m[\033[0m"
     git remote "-v"
     git ls-files
     echo "\033[1;33m]\033[0m"
+    echo "\033[1;33mTo markdown branch\033[0m"
+    git push origin md
   else
     echo "\033[1;35mAbort\033[0m"
   fi
+  # 返回目录
   cd ".."
 fi
 
