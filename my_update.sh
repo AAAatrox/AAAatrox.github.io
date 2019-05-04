@@ -6,6 +6,7 @@ else
   cd "./source"
   echo "\033[1;33m[\033[0m"
   echo $PWD
+  ls "~/blog/node_modules/" > npm_list
   echo "\033[1;33m]\033[0m"
 
   echo "\033[1;32mAdding...\033[0m"
