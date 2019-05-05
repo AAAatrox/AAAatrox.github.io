@@ -1,6 +1,6 @@
 ---
 title: hexo主题制作
-updated: 1556970750
+updated: 1557023408
 date: 2019-05-02 17:24:56
 tags:
  - hexo
@@ -63,6 +63,25 @@ js:`blog/node_modules/hexo-generator-index/`
 ## js
 
 - 全页长度: `document.body.scrollHeight`
+
+### 滚动
+
+由于浏览器对`scroll-behavior`的支持性不好,所以选择`scrollIntoView`来实现
+
+```javascript
+$(document).ready(function () {
+  console.log(document.querySelectorAll(".right_bottom")[0]);
+  console.log(document.querySelectorAll(".bottom_block")[0]);
+  document.querySelectorAll(".right_bottom")[0].onclick = function () {
+    document.querySelectorAll(".bottom_block")[0].scrollIntoView({
+      block: "end",
+      behavior: "smooth"
+    });
+  };
+});
+```
+
+> 注意`querySelectorAll`和`onclick`的用法
 
 ## 其他
 
