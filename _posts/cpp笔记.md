@@ -1,6 +1,6 @@
 ---
 title: cpp笔记
-updated: 1556276176
+updated: 1557198543
 date: 2019-01-20 11:04:48
 tags:
  - cpp
@@ -78,4 +78,24 @@ for (int i = 0; i < edge[1].size(); i ++)
 {
   edge[1].at(i).u = 1;
 }
+```
+
+## `queue`和`priority_queue`
+
+```cpp
+struct vfuck
+{
+  long long dis;
+}vnode[50001];
+struct cmp
+{
+  bool operator()(vfuck a, vfuck b)
+  {
+    return a.dis > b.dis;
+  }
+};
+priority_queue <vfuck, vector<vfuck>, cmp> pq;
+tmp = pq.top();
+pq.push(tmp);
+pq.pop();
 ```
