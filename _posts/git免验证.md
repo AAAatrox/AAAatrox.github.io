@@ -1,6 +1,6 @@
 ---
 title: git免验证
-updated: 1551018203
+updated: 1557279782
 date: 2019-02-17 10:16:38
 tags:
  - git
@@ -33,4 +33,10 @@ ssh -T git@github.com
 
 ```bash
 git config --global credential.helper store
+```
+
+取消自动保存(方便多个账号)
+
+```bash
+git config --global credential.helper ""
 ```
