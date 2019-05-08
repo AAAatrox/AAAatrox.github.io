@@ -1,0 +1,81 @@
+<!-- post内容 -->
+
+<% if (theme.debug.enable) { %>
+<% } %>
+
+<!-- 主体部分,文章内容 -->
+<div class="mid_container">
+<div class="shadow_block main_block block_inf" id="mid_post">
+
+  <!-- 文章标题 -->
+  <div>
+    <p id="post_name"><%= page.title %></p>
+  </div>
+  <div>
+    <p><%- date(page.date, "YYYY-MM-DD") %></p>
+  </div>
+  <div>
+    <%- page.content %>
+  </div>
+  
+</div>
+</div>
+
+<!-- 显示文章tag和category -->
+<div class="block_hide_left shadow_block left_block">
+    <% if (theme.debug.enable) { %>
+      <p>has tags: <%- page.tags != null %></p>
+    <% } %>
+
+    <!-- 文章的tags -->
+    <div>
+      <div class="bar_section">
+        <p>Tags</p>
+      </div>
+      <% if (page.tags) { %>
+        <% page.tags.forEach(function (tag) { %>
+            <a class="bar_item" href="<%- url_for(tag.path) %>"><%- tag.name %></a>
+        <% }) %>
+      <% } %>
+    </div>
+    <!-- 文章的categories -->
+    <div>
+      <div class="bar_section">
+        <p>Categories</p>
+      </div>
+      <% if (page.categories) { %>
+        <% page.categories.forEach(function (category) { %>
+            <a class="bar_item" href="<%- url_for(category.path) %>"><%- category.name %></a>
+        <% }) %>
+      <% } %>
+    </div>
+
+    <!-- 文章的附加导航 -->
+    <%- js('js/guide.js') %>
+</div>
+
+<!-- 左侧栏的开关 -->
+<div class="left_tool_3 shadow_tool">
+  <p id="left_link">Show</p>
+</div>
+<script>
+  $(document).ready(function () {
+    $(".left_tool_3").click(function () {
+      $(".block_hide_left").toggleClass("block_show_left");
+      var left_tool_3 = document.getElementById("left_link");
+      if (left_tool_3.innerHTML == "Show") left_tool_3.innerHTML = "Hide";
+      else left_tool_3.innerHTML = "Show";
+    });
+    // 用css覆盖不了js,所以只能用js来写hover
+    $(".left_block").mousemove(function () {
+      $(".left_block").css("opacity", 1);
+    });
+    $(".left_block").mouseleave(function () {
+      my_resize();
+    });
+  });
+</script>
+
+
+<!-- 分页器,貌似没用 -->
+<%- partial('partial/paginator') %>

@@ -1,0 +1,76 @@
+<!-- 标题,链接 -->
+
+<!-- 页面头,标题 -->
+<% if (is_home() && (page.current == 1)) { %>
+  <div class="title_block block_full_mid">
+<% } else { %>
+  <div class="title_block block_100_mid">
+<% } %>
+  <a href="<%- url_for(theme.menu.Home) %>" id="web_name">
+    <p><%= config.title %></p>
+  </a>
+</div>
+
+
+<div class="block_hide_right shadow_block right_block">
+    <!-- 每一项逐个生成 -->
+    <div>
+      <div class="bar_section">
+        <p>Links</p>
+      </div>
+      <% for (var name in theme.menu) { %>
+          <a class="bar_item" href="<%- url_for(theme.menu[name]) %>"><%= name %></a>
+      <% } %>
+    </div>
+
+    <% if (theme.debug.enable) { %> 
+      <p>tags: <%- site.tags %></p>
+    <% } %>
+    <!-- 全部tags排序 -->
+    <div id="right_tags">
+      <div class="bar_section">
+        <p>Tags</p>
+      </div>
+    </div>
+    <script>
+        tags_name = new Array();
+        tags_path = new Array();
+
+        '<% site.tags.forEach(function (tag) { %>'
+          var temp = '<%- tag.name %>';
+          tags_name.push(temp);
+          temp = '<%- tag.path %>';
+          tags_path.push(temp);
+        '<% }) %>'
+        // 因为path和name只有前缀不同,所以分别排序之后相对顺序还是一样的
+        tags_name.sort();
+        tags_path.sort();
+        for (var i = 0; i < tags_name.length; i ++)
+        {
+          $("#right_tags").append("<a class='bar_item' href='/" + tags_path[i] + "'>" + tags_name[i] + "</a>\n");// bar_item
+        }
+    </script>
+    <!-- 全部categories -->
+    <div>
+      <div class="bar_section">
+        <p>Categories</p>
+      </div>
+      <% site.categories.forEach(function (category) { %>
+          <a class="bar_item" href="<%- url_for(category.path) %>"><%- category.name %></a>
+      <% }) %>
+    </div>
+</div>
+
+<div class="right_tool_3 shadow_tool">
+  <script>
+    $(document).ready(function () {
+      $(".right_tool_3").click(function () {
+        $(".block_hide_right").toggleClass("block_show_right");
+        var right_tool_3 = document.getElementById("right_link");
+        if (right_tool_3.innerHTML == "Show") right_tool_3.innerHTML = "Hide";
+        else right_tool_3.innerHTML = "Show";
+      });
+    });
+  </script>
+  <p id="right_link">Show</p>
+</div>

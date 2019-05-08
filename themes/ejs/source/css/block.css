@@ -1,0 +1,197 @@
+/**
+ * 主体块
+ */
+
+.shadow_block {
+  /* 阴影样式 */
+  transition-duration: 0.5s;
+  box-shadow: 0px 0px 10px var(--shadow_grey);
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 0px;
+
+  word-break: break-all;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  padding-top: 0px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  overflow-y: scroll;
+}
+
+.shadow_block:hover {
+  box-shadow: 0px 0px 10px black;
+}
+
+.shadow_block::-webkit-scrollbar {
+  width: 0px;
+}
+
+.block_300 {
+  height: 300px;
+}
+
+.block_200 {
+  height: 200px;
+}
+
+.block_100 {
+  height: 100px;
+}
+
+.block_50 {
+  height: 50px;
+}
+
+.block_inf {
+  /* 文章内容 */
+  height: auto;
+  min-height: 300px;
+}
+
+.block_100_mid {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.block_full_mid {
+  padding-top: 400px;
+  padding-bottom: 500px;
+}
+
+.block_hide_top {
+  top: -70%;
+}
+
+.block_show_top {
+  top: 100px;
+}
+
+.block_hide_right {
+  right: -70%;
+}
+
+.block_show_right {
+  right: 70px;
+}
+
+.block_hide_left {
+  left: -70%;
+}
+
+.block_show_left {
+  left: 70px;
+}
+
+
+.mid_block {
+  /* 居中的块,主要用于存放文章摘要,需要考虑并排 */
+  float: left;
+  position: relative;
+
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.main_block {
+  /* 文章内容,不需要考虑并排 */
+
+  float: left;
+  position: relative;
+
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.center_block {
+  /* tag/category内容,不需要考虑并排 */
+  min-height: 300px;
+  text-align: center;
+
+  float: left;
+  position: relative;
+
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.title_block {
+  /* 网页标题块 */
+  text-align: center;
+  background-color: var(--box_grey);
+  margin-bottom: 100px;
+}
+
+.bottom_block {
+  /* 放在底部用于凑长度的块 */
+  text-align: center;
+  padding-top: 30px; 
+  padding-bottom: 30px; /* 凑高度 */
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0px;
+  margin-right: 0px; /* 居中 */
+  width: 100%;
+
+  border-width: 0px;
+  box-shadow: 0px 0px 0px;
+}
+
+.bottom_block:hover {
+  box-shadow: 0px 0px 0px;
+}
+
+.right_block {
+  position: fixed;
+  z-index: 3;
+  top: 20%;
+  
+  height: 60%;
+  width: 30%;
+  max-width: 400px;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  background-color: white;
+
+  overflow-y: scroll;
+}
+
+.left_block {
+  transition-duration: 0.5s;
+
+  position: fixed;
+  z-index: 3;
+  top: 20%;
+  
+  height: 60%;
+  width: 20%;
+  max-width: 220px;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  background-color: white;
+
+  overflow-y: scroll;
+}
+
+.top_block {
+  /* 搜索框 */
+  position: fixed;
+  z-index: 4;
+  background-color: white;
+
+  height: 60%;
+  padding-top: 20px;
+  padding-right: 20px;
+  overflow-y: scroll;
+}

@@ -1,0 +1,82 @@
+#web_name {
+  font-size: 50px;
+}
+
+#post_name {
+  text-align: center;
+  font-size: 35px;
+}
+
+#guide_title {
+  transition-duration: 0.5s;
+  font-weight: 900;
+
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.guide_2 {
+  margin-left: 10px;
+}
+
+.guide_3 {
+  margin-left: 20px;
+}
+
+.guide_4 {
+  margin-left: 30px;
+}
+
+.guide_5 {
+  margin-left: 40px;
+}
+
+.guide_active {
+  border-right: 3px solid var(--box_orange);
+  border-left: 3px solid var(--text_orange);
+  border-radius: 3px;
+  background-color: var(--box_orange);
+}
+
+.guide_1,
+.guide_2,
+.guide_3,
+.guide_4,
+.guide_5 {
+  padding-left: 15px;
+  position: relative;
+
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#guide_title:hover,
+.guide_1:hover,
+.guide_2:hover,
+.guide_3:hover,
+.guide_4:hover,
+.guide_5:hover {
+  color: var(--text_orange);
+}
+
+.bar_section {
+  font-weight: 900;
+}
+
+.bar_item {
+  transition-duration: 0.5s;
+  color: var(--text_grey);
+  text-decoration: none;
+}
+
+.bar_item:hover {
+  color: var(--text_orange);
+  text-decoration: underline;
+}
+
+code {
+  /* 行间代码 */
+  font-size: 15px;
+  background-color: var(--code_grey);
+}
