@@ -1,6 +1,6 @@
 ---
 title: git笔记
-updated: 1555291903
+updated: 1557308168
 date: 2019-01-20 10:49:06
 tags:
  - git
@@ -38,10 +38,10 @@ git remote add 名字 地址
 git remote rm 名字
 ```
 
-- 从版本中删除
+- 从版本中删除(!)
 
 ```bash
-git rm -n 文件
+git rm 文件 --cached
 ```
 
 - 删除本地分支
