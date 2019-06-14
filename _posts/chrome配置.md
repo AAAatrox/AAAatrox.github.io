@@ -45,3 +45,7 @@ tags:
 ```bash
 google-chrome --allow-file-access-from-files
 ```
+
+## `chrome`和`chromium`配置转移
+
+`.config/google-chrome`和`.config/chromium`

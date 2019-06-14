@@ -1,5 +1,6 @@
 ---
 title: wordpress笔记
+updated: 1557402085
 date: 2019-04-29 14:24:21
 tags:
  - wordpress
@@ -80,3 +81,4 @@ define('FS_METHOD', "direct");
 
 - `WP Editor.md`:markdown编辑器
 - `WordPress Database Backup`:备份工具
+

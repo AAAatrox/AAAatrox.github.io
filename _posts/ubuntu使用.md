@@ -1,6 +1,6 @@
 ---
 title: ubuntu使用
-updated: 1556092953
+updated: 1560417244
 date: 2019-02-25 22:26:14
 tags:
  - ubuntu
@@ -32,7 +32,7 @@ nm-connection-editor
 
 `设置`$\to$`wifi`$\to$`打开wifi热点`
 
-## git录屏
+## gif录屏
 
 - byzanz
 
@@ -170,4 +170,28 @@ sudo apt install aptitude
 
 ```bash
 sudo aptitude purge libreoffice6.0
+```
+
+## 安装字体
+
+```bash
+sudo mkdir /usr/share/fonts/{name}
+sudo cp {font}.ttf /usr/share/fonts/{name}
+cd /usr/share/fonts/{name}
+sudo mkfontscale
+sudo mkfontdir
+sudo fc-cache -fv
+```
+
+## 图像转换
+
+```bash
+sudo apt install sam2p
+sam2p shit.png shit.gif
+```
+
+## 图像编辑
+
+```bash
+sudo apt install gimp
 ```

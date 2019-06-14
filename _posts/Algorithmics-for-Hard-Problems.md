@@ -1,6 +1,6 @@
 ---
 title: Algorithmics-for-Hard-Problems
-updated: 1556721524
+updated: 1559046655
 date: 2019-05-01 10:51:43
 tags:
 categories:
@@ -143,11 +143,14 @@ Clique$\le\_{p}$VC
 ### Definition 2.3.3.21
 
 **NPO** is the class of optimization problems, where $U=(\Sigma\_I,\Sigma\_O,L,L\_I,M,cost,goal)\in$NPO if the following conditions hold
+
 - $L\_I\in$P
+
 - there exists a polynomial $p\_U$ such that
- - for every $x\in L\_1$, and every $y\in M(x),|y|\le p\_U(|x|)$, and
- - there exists a polynomial-time algorithm that, for every $y\in\Sigma\_O^{\*}$ and every $x\in L\_1$ such that $|y|\le p\_U(|x|)$, decides whether $y\in M(x)$, and
- - the function cost is computable in polynomial time
+ - for every $x\in L\_I$, and every $y\in M(x),|y|\le p\_U(|x|)$, and
+ - there exists a polynomial-time algorithm that, for every $y\in\Sigma\_O^{\*}$ and every $x\in L\_I$ such that $|y|\le p\_U(|x|)$, decides whether $y\in M(x)$, and
+
+- the function cost is computable in polynomial time
 
 ### Definition 2.3.3.23
 
@@ -168,3 +171,91 @@ We say that $U$ is **NP-hard** if Lang$\_U$ is NP-hard
 ### Lemma 2.3.3.25
 
 If an optimization problem $U\in$PO, then Lang$\_U\in$P
+
+# 4
+
+## 4.2
+
+### Definition 4.2.1.1
+
+Let $U=(\Sigma\_I,\Sigma\_O,L,L\_I,M,cost,goal)$ be an optimization problem, and let $A$ be a consistent algorithm for $U$. For every $x\in L\_I$, the **relative error** $\varepsilon\_A(x)$ **of $A$ on $x$** is defined as
+$$ \varepsilon\_A=\dfrac{|cost(A(x))-Opt\_U(x)|}{Opt\_U(x)} $$
+
+- For any $n\in\mathbb{N}$, we define **the relative error of $A$** as
+$$ \varepsilon\_A(n)=\max\\{\varepsilon\_A(x)|x\in L\_I\cap(\Sigma\_I)^n\\} $$
+
+- For every $s\in L\_I$, the **approximation ratio** $R\_A(x)$ **of $A$ on $x$** is defined as
+$$ R\_A(x)=\max\\{\dfrac{cst(A(x))}{Opt\_U(x)},\dfrac{Opt\_U(x)}{cost(A(x))}\\} $$ 
+
+- For any $n\in\mathbb{N}$, we define the **approximation ratio of $A$** as
+$$ R\_A(n)=\max\\{R\_A(x)|x\in L\_I\cap(\Sigma\_I)^n\\} $$
+
+- For any positive real $\delta > 1$, we say that $A$ is a **$\delta$-approximation algorithm for $U$** if $R\_A(x)\le\delta$ for every $x\in L\_I$
+
+- For every function $f:\mathbb{N}\to\mathbb{R}^+$, we say that $A$ si an **$f(n)$-approximation algorithm for $U$** if $R\_A(n)\le f(n)$ for every $n\in\mathbb{N}$
+
+### Definition 4.2.1.6
+
+Let $U=(\Sigma\_I,\Sigma\_O,L,L\_I,M,cost,goal)$ be an optimization problem. An algorithm $A$ is called a **polynomial-time approximation scheme (PTAS) for $U$** if for every input pair $(x,\varepsilon)\in L\_I\times\mathbb{R}^+, A$ computes a feasible solution $A(x)$ with a relative error at most $\varepsilon$, and $Time\_A(x,\varepsilon^{-1})$ can be bounded by a function that is polynomial in $|x|$.
+
+If $Time\_A(x,\varepsilon^{-1})$ can be bounded by a function that is polynomial in both $|x|$ and $\varepsilon^{-1}$, then we say that $A$ is a **fully polynomial-time approximation scheme (FPTAS) for $U$**
+
+### Definition 4.2.3.1
+
+Let $U=(\Sigma\_I,\Sigma\_O,L,L\_I,M,cost,goal)$ and $\bar{U}=(\Sigma\_I,\Sigma\_O,L,L,M,cost,goal)$ be two optimization problems with $L\_I\subset L$. A **distance function for $\bar{U}$ according to** $L\_I$ is any function $h\_L:L\to\mathbb{R}^{\ge0}$ satisfying the properties
+
+1. $h\_L(x)=0$ for every $x\in L\_I$, and
+2. $h$ is polynomial-time computable
+
+Let $h$ be a distance function for $\bar{U}$ accoring to $L\_I$. We define, for any $r\in\mathbb{R}^+$
+$$ Ball\_{r,h}(L\_I)=\\{w\in L|h(w)\le r\\} $$
+Let $A$ be a consistent algorithm for $\bar{U}$, and let $A$ be an $\varepsilon$-approximation algorithm for $U$ for some $\varepsilon\in\mathbb{R}^{-1}$. Let $p$ be a positive real. We say that $A$ is **p-stable according to $h$** if, for every real $0 < r \le p$, there exists a $\delta\_{r,\varepsilon}\in\mathbb{R}^{> 1}$ such that $A$ is a $\delta\_{r,\varepsilon}$-approximation for $U\_r=(\Sigma\_I,\Sigma\_O,L,Ball\_{r,h}(L\_I),M,cost,goal)$
+
+$A$ is **stable according to $h$** if $A$ is $p$-stable according to $h$ for every $p\in\mathbb{R}^+$. We say that $A$ is **unstable according to h** if $A$ is not $p$-stable for any $p\in\mathbb{R}^+$
+
+For every positive integer $r$, and every function $f\_r:\mathbb{N}\to\mathbb{R}^{> 1}$ we say that $A$ is $(r,f\_r(n))$**-quasistable according to $h$** if $A$ is an $f\_r(n)$-approximation algorithm for $U\_r=(\Sigma\_I,\Sigma\_O,L,Ball\_{r,h}(L\_I),M,cost,goal)$
+
+### Definition 4.2.3.6
+
+Let $U=(\Sigma\_I,\Sigma\_O,L,Ball\_{r,h}(L\_I),M,cost,goal)$ and $\bar{U}=(\Sigma\_I,\Sigma\_O,L,L,M,cost,goal)$ be two optimization problems with $L\_I\subset L$. Let $h$ be a distance function for $\bar{U}$ according to $L\_I$, and let $U\_r=(\Sigma\_I,\Sigma\_O,L,Ball\_{r,h}(L\_I),M,cost,goal)$ for every $r\in\mathbb{R}^+$. Let $A=\\{A\_{\varepsilon}\\}\_{\varepsilon > 0}$ be a PTAS for $U$
+
+If for every $r > 0$ and every $\varepsilon > 0, A\_{\varepsilon}$ is a $\delta\_{r,\varepsilon}$-approximation algorithm for $U\_r$, we say that the PTAS $A$ is **stable according to $h$**
+
+If $\delta\_{r,\varepsilon}\le f(\varepsilon)\cdot g(r)$, where
+- $f$ and $g$ are some functions from $\mathbb{R}^{\ge0}$ to $\mathbb{R}^+$, and
+- $\lim\_{\varepsilon\to0}f(\varepsilon)=0$
+then we say that the PTAS $A$ is **superstable according to $h$**
+
+5
+
+5.2
+
+### Definition 5.2.2.10
+
+Let $U=(\Sigma\_I,\Sigma\_O,L,L\_I,M,cost,goal)$ be an optimization problem. For any positive real $\delta > 1$ a randomized algorithm $A$ is called a **randomized $\delta$-approximation algorithm for $U$** if
+
+1. $Prob(A(x)\in M(x))=1$, and
+2. $Prob(R\_A(x)\le\delta)\ge1/2
+
+for every $x\in L\_I
+
+For every function $f:\mathbb{N}\to\mathbb{R}^+$, we say that $A$ is a **randomized $f(n)$-approximation algorithm for $U$** if
+$$ Prob(A(x)\in M(x))=1\ and\ Prob(R\_A(x)\le f(|x|))\ge1/2 $$
+for every $x\in L\_I$
+
+A randomized algorithm $A$ is called a **randomized polynomial-time approximation scheme (RPTAS) for $U$** if there exists a function $p:L\_I\times\mathbb{R}^+\to\mathbb{N}$ such that for every input $(x,\delta)\in L\_I\times\mathbb{R}^+$:
+
+1. $Prob(A(x,\delta)\in M(x))=1$ for every random choice $A$ computes a feasible solution of $U$
+2. $Prob(\varepsilon\_A(x,\delta)\le\delta)\ge1/2$ a feasible solution, whose relative error is at most $\delta$, is produced with the probability at least 1/2
+3. $Time\_A(x,\delta^{-1})\le p(|x|,\delta^{-1})$ and $p$ is a polynomial in $|x|$
+
+If $p(|x|,\delta^{-1})$ is polynomial in both its arguments $|x|$ and $\delta^{-1}$, then we say that $A$ is a **randomized fully polynomial-time approximation scheme (RFPTAS) for $U$**
+
+### Definition 5.2.2.11
+
+Let $U=(\Sigma\_I,\Sigma\_O,L,L\_I,M,cost,goal)$ be an approximation problem. For any positive real $\delta > 1$, a randomized algorithm $A$ is called a **randomized $\delta$-expected approximation algorithm for $U$** if
+
+1. $Prob(A(x)\in M(x))=1$
+2. $E[R\_A(x)]\le\delta$
+
+for every $x\in L\_I$

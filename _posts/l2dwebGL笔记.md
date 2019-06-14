@@ -245,3 +245,6 @@ sampleApp1/-+-sampleApp1.html
 - `ModelSettingJson.prototype.getMotionFile`
 - ...
 
+## 文件合并顺序
+
+- 可行方案1: `LAppDefine`->`live2d`->`LAppLive2DManager`->`Live2DFramework`->其他->`SampleApp1`

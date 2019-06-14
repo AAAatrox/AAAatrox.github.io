@@ -1,10 +1,12 @@
 ---
 title: Algorithms
-updated: 1554790952
+updated: 1557654516
 date: 2019-03-30 10:13:19
 tags:
 categories:
  - 问题求解
+latex:
+ - 2
 ---
 
 ## 31 数论算法
@@ -14,7 +16,7 @@ categories:
 #### 欧拉函数
 
 $\mathbb{Z}\_n^\*$的规模表示为$\phi(n)$,称为**欧拉phi函数**,满足下式
-$$\phi(n)=n\prod\_{\mbox{$p:p$是素数且$p|n$}}(1-\dfrac{1}{p})$$
+$$\phi(n)=n\prod\_{\text{$p:p$是素数且$p|n$}}(1-\dfrac{1}{p})$$
 
 ### 31.4 求解模线性方程
 
@@ -78,7 +80,7 @@ $$x\equiv a\_i(\mod n\_i),i=1,2,...,k$$
 
 如果$n\_1,n\_2,...,n\_k$两两互质,$n=n\_1n\_2...n\_k$,则对所有整数$x$和$a$
 $$x\equiv a(\mod n\_i)$$
-(其中$i=1,2,...,k)当且仅当
+(其中$i=1,2,...,k$)当且仅当
 $$x\equiv a(\mod n)$$
 
 ### 31.6 元素的幂
@@ -127,3 +129,21 @@ int Modular-Exponentiation(int a, int b, int n) // 计算(a^b) % n
   return d;
 }
 ```
+
+## 34 NP完全性
+
+### 34.4 NP完全性的证明
+
+#### 引理 34.8
+
+如果语言$L$是一种满足对任意$L\in$NPC都有$L'\le\_PL$的语言,则$L$是NP难度的.此外,如果$L\in$NP,则$L\in$NPC
+
+#### 公式可满足性
+
+$$ SAT=\\{\langle\varphi\rangle: \text{$\varphi$是一个可满足的布尔公式}\\} $$
+
+#### 3-CNF-SAT 3-CNF可满足性
+
+布尔公式中的一个**文字**(literal)是指一个变量或变量的非.如果一个布尔公式可以表示为所有子句的与,并且每个子句都是一个或多个文字的或,则该布尔公式为**合取范式**,CNF(conjunctive normal form).如果公式中每个子句恰好都有三个不同的文字,则称该布尔公式为3**合取范式**,3-CNF,例如
+$$ (x\_1\vee\lnot x\_1\vee\lnot x\_2)\wedge(x\_3\vee x\_2\vee x\_4)\wedge(\lnot x\_1\vee\lnot x\_3\vee\lnot x\_4) $$
+就是一个3合取范式,第一个子句包含3个文字$x\_1,\lnot x\_1$和$\lnot x\_2$

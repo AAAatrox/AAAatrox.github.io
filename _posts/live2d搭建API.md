@@ -1,6 +1,6 @@
 ---
 title: live2d搭建API
-updated: 1556502634
+updated: 1557570937
 date: 2019-04-27 18:11:03
 tags:
  - php
@@ -8,11 +8,39 @@ tags:
  - live2d
 ---
 
+# 原生js静态加载
+
+## 使用cdn
+
+### 遇到的问题(未解决)
+
+- 图片跨源请求
+
+```
+Uncaught DOMException: Failed to execute 'texImage2D' on 'WebGLRenderingContext': The image element contains cross-origin data, and may not be loaded.
+```
+
+- 浏览器的CORS协议
+
+```
+Access to XMLHttpRequest at 'file:///home/lynx/webGL/assets/Epsilon/Epsilon.model.json' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.
+```
+
+- 浏览器`json`加载失败
+
+```
+main.js:7588 Failed to load (0) : new/assets/Epsilon/Epsilon.model.json
+```
+
+## 不使用cdn
+
+# php动态加载
+
 > [参考fghrsh的API实现](https://www.fghrsh.net/post/123.html)
 
-# 原代码分析
+## 原代码分析
 
-## 结构
+### 结构
 
 - 后端(API)
 
@@ -72,9 +100,9 @@ live2d_fore/-+-lib/-+-jquery-ui.min.js
              `-fuck.json
 ```
 
-## 文件功能
+### 文件功能
 
-### 前端
+#### 前端
 
 > `lib/`里面的是必备的jquery
 
@@ -92,7 +120,7 @@ live2d_fore/-+-lib/-+-jquery-ui.min.js
 
 - `fuck.json`: 自己写的本地嘴臭API
 
-#### live2d.min.js
+##### live2d.min.js
 
 作者将`Live2DFramework`,`live2d.min.js`,`LAppDefine`,`LAppLive2DManager`,`LAppModel`,`PlatformManager`,`MatrixStack`,`ModelSettingJson`全部合并到了`live2d.min.js`(舍去`SampleApp`)
 
@@ -157,20 +185,20 @@ function(t, e, i) // 不知道干嘛的,删掉感觉没影响
 }
 ```
 
-### 后端
+#### 后端
 
-#### add
+##### add
 
-#### get
+##### get
 
-#### rand
+##### rand
 
-#### rand_textures
+##### rand_textures
 
-#### switch
+##### switch
 
-#### switch_textures
+##### switch_textures
 
-#### tools
+##### tools
 
-# 重构(官方SDK + API)
+## 重构(官方SDK + API)

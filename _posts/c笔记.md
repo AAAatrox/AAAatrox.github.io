@@ -1,6 +1,6 @@
 ---
 title: c笔记
-updated: 1554459508
+updated: 1559136850
 date: 2019-01-20 11:03:07
 tags:
  - c
@@ -207,3 +207,137 @@ void init_screen()
 ## 信号处理
 
 - [菜鸟教程](http://www.runoob.com/cplusplus/cpp-signal-handling.html)
+
+## mmap
+
+```c
+void my_mmap(const char *filename)
+{
+  struct stat sb;// statebuf
+  int my_fd = 0;
+  char *my_addr = NULL;// mmap地址
+
+  my_fd = open(filename, O_RDONLY);// 只读
+  if (my_fd == -1) {
+    handle_error("open");
+  }
+
+  if (fstat(my_fd, &sb) == -1) {
+    handle_error("fstat");
+  }
+
+  my_addr = mmap(
+      NULL, sb.st_size,// size
+      PROT_READ,
+      MAP_PRIVATE,// MAP_SHARED
+      my_fd,
+      0// offset
+  );
+}
+```
+
+## pthread
+
+```c
+#include <assert.h>
+#include <pthread.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <errno.h>
+#include <ctype.h>
+
+#define GREEN(format, ...) \
+  printf("\033[1;32m" format "\33[0m\n", ## __VA_ARGS__)
+#define YELLOW(format, ...) \
+  printf("\033[1;33m" format "\33[0m\n", ## __VA_ARGS__)
+#define RED(format, ...) \
+  printf("\033[1;31m[%s, %d]" format "\33[0m\n", __func__, __LINE__, ## __VA_ARGS__)
+#define MAGENTA(format, ...) \
+  printf("\033[1;35m[%s]" format "\33[0m\n", __func__, ## __VA_ARGS__)
+
+
+struct thread_info {// thread_start的参数
+  pthread_t thread_id;// 存放pthread_create的返回值(id)
+  int       thread_num;// 自己定义的线程号
+  char     *argv_string;// 命令行的字符串
+};
+
+void *thread_start(void *arg);
+// display address near top of our stack, and return upper-cased copy of argv_string
+
+int main(int argc, char *argv[])
+{
+  int num_threads;// 线程数
+  struct thread_info *tinfo;
+  pthread_attr_t attr;// 线程属性
+  void *res;
+
+  num_threads = argc - optind;// 线程数
+
+  if (pthread_attr_init(&attr) != 0) {// 初始化线程属性
+    RED("pthread_attr_init");
+    assert(0);
+  }
+
+  tinfo = calloc(num_threads, sizeof(struct thread_info));// 申请线程空间
+  if (tinfo == NULL) {
+    RED("calloc");
+    assert(0);
+  }
+
+  for (int i = 0; i < num_threads; i ++) {
+    tinfo[i].thread_num = i;
+    tinfo[i].argv_string = argv[optind + i];
+
+    if (pthread_create(&tinfo[i].thread_id, &attr,
+        &thread_start, &tinfo[i]) != 0) {// 创建线程
+      RED("pthread_create");
+      assert(0);
+    }
+  }
+
+  if (pthread_attr_destroy(&attr) != 0) {// 删除线程属性
+    RED("pthread_attr_destroy");
+    assert(0);
+  }
+
+  for (int i = 0; i < num_threads; i++) {
+    if (pthread_join(tinfo[i].thread_id, &res) != 0) {// 合并线程
+      RED("pthread_join");
+    assert(0);
+    }
+
+    GREEN("Joined with thread %d; returned value was %s",
+        tinfo[i].thread_num, (char *) res);
+
+    free(res);// 释放结构体中字符串的空间
+  }
+
+  free(tinfo);// 释放线程空间
+  exit(EXIT_SUCCESS);
+}
+
+void *thread_start(void *arg)
+{
+  struct thread_info *tinfo = arg;// &tinfo[num]
+  char *uargv, *p;
+
+  YELLOW("Thread %d: top of stack near %p; argv_string=%s",
+      tinfo->thread_num, &p, tinfo->argv_string);
+
+  uargv = strdup(tinfo->argv_string);// 复制字符串(申请内存)
+  if (uargv == NULL) {
+    RED("strdup");
+    assert(0);
+  }
+
+  for (p = uargv; *p != '\0'; p++) {// 修改uargv
+    *p = toupper(*p);
+  }
+
+  return uargv;
+}
+
+```

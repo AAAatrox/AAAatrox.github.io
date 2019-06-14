@@ -1,6 +1,6 @@
 ---
 title: Linux命令笔记
-updated: 1556884476
+updated: 1558190303
 date: 2019-01-20 10:52:59
 tags:
  - Linux
@@ -167,4 +167,5 @@ ln -s $exists $new
 
 ```bash
 find -maxdepth 10 -type f | xargs wc -l
+wc -l `find -name '*.*'`
 ```

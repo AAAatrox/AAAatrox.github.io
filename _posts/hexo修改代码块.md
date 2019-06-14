@@ -1,6 +1,6 @@
 ---
 title: hexo修改代码块
-updated: 1551491729
+updated: 1558057719
 date: 2019-02-28 19:27:39
 tags:
  - hexo
@@ -8,6 +8,10 @@ tags:
  - html
  - css
 ---
+
+# 此文作废,相关内容请查看[hexo主题制作](https://niabie.github.io/2019/05/02/hexo%E4%B8%BB%E9%A2%98%E5%88%B6%E4%BD%9C/)
+
+ ---
 
 > 记得`hexo cl`
 

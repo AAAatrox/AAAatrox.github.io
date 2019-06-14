@@ -1,6 +1,6 @@
 ---
 title: Makefile笔记
-updated: 1556366363
+updated: 1558057719
 date: 2019-04-17 22:20:21
 tags:
  - c
@@ -34,4 +34,16 @@ gdb:
 
 cgdb:
 	cgdb ./shit
+```
+
+- 头文件
+
+```makefile
+SRCS    := $(shell find ./src/ -maxdepth 1 -name "*.cpp")
+INC     := -I./include
+CFLAGS  := -Wall -Werror
+
+run:    
+	g++ $(CFLAGS) $(INC) $(SRCS) -o md_parser
+	./md_parser
 ```

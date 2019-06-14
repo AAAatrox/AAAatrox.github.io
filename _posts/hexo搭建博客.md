@@ -18,12 +18,21 @@ git config --global color.ui true
 ## 安装node.js
 
 ## 安装npm和hexo,搭建博客
+
 [知乎](https://zhuanlan.zhihu.com/p/34654952)
 
  - ubuntu
 ```bash
 sudo apt-get install nodejs
 sudo apt-get install npm
+```
+
+### 简要过程
+
+```bash
+hexo init
+sudo npm install
+npm install hexo-deployer-git --save
 ```
 
 ## 设置tags和categories
@@ -34,7 +43,7 @@ sudo apt-get install npm
 
 [CSDN](https://blog.csdn.net/Sugar_Rainbow/article/details/57415705)
 
-## 搜索功能
+## 搜索功能(只适用Next主题)
 
 [CSDN](https://blog.csdn.net/ganzhilin520/article/details/79047983)
 
