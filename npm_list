@@ -1,3 +1,4 @@
+@babel
 JSONStream
 a-sync-waterfall
 abbrev
@@ -18,6 +19,7 @@ assign-symbols
 async
 async-each
 atob
+babel-eslint
 balanced-match
 base
 basic-auth
@@ -71,7 +73,12 @@ encodeurl
 entities
 escape-html
 escape-string-regexp
+eslint-scope
+eslint-visitor-keys
 esprima
+esrecurse
+estraverse
+esutils
 etag
 expand-brackets
 expand-range
@@ -90,6 +97,7 @@ get-value
 glob
 glob-base
 glob-parent
+globals
 graceful-fs
 has-ansi
 has-flag
@@ -97,6 +105,7 @@ has-value
 has-values
 hexo
 hexo-bunyan
+hexo-deployer-git
 hexo-front-matter
 hexo-fs
 hexo-generator-archive
@@ -138,7 +147,9 @@ is-wsl
 isarray
 isexe
 isobject
+js-tokens
 js-yaml
+jsesc
 jsonparse
 kind-of
 lazy-cache
@@ -257,10 +268,12 @@ text-table
 through
 tildify
 titlecase
+to-fast-properties
 to-object-path
 to-regex
 to-regex-range
 toidentifier
+trim-right
 uglify-js
 uglify-to-browserify
 union-value
