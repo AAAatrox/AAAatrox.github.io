@@ -1,0 +1,120 @@
+/* 文字样式 */
+@font-face {
+  font-family: 'varela';
+  src: url("/font/VarelaRound.ttf");
+}
+a {
+  text-decoration: none;
+}
+.web_name {
+/* 网站名 */
+  transition-duration: 0.5s;
+  font-size: 55px;
+  font-weight: bold;
+  font-family: 'varela';
+  cursor: pointer;
+  color: var(--web);
+  text-decoration: none;
+  text-shadow: 0px 0px 2px #000;
+}
+.web_name:hover {
+  text-shadow: 0px 0px 4px #000;
+}
+.archive_index {
+/* 文章编号 */
+  font-family: 'varela';
+  font-size: var(--size_3);
+}
+.archive_title {
+/* 文章标题 */
+  font-family: 'varela';
+  color: var(--text_3);
+  font-weight: bold;
+  font-size: var(--size_3);
+}
+.archive_date {
+/* 文章日期 */
+  font-family: 'varela';
+  font-size: var(--size_3);
+  text-align: right;
+  right: 0px;
+/* 父元素必须是relative */
+  position: absolute;
+}
+.search_item,
+.tag_item,
+.category_item,
+.site_item {
+/* 关键词 */
+  font-family: 'varela';
+  background-color: var(--text_3);
+  border-radius: 5px;
+  padding: 3px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  font-weight: bold;
+  display: inline-block;
+}
+.search_item a,
+.tag_item a,
+.category_item a,
+.site_item a {
+  color: var(--web);
+  cursor: pointer;
+}
+.guide_item {
+/* 附加导航的小标题 */
+  padding: 0;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  display: block;
+  font-weight: bold;
+  font-family: 'varela';
+  color: var(--text_4);
+  font-size: var(--size_3);
+}
+#guide_title {
+/* 附加导航的文章标题 */
+  cursor: pointer;
+}
+.guide_1,
+.guide_2,
+.guide_3,
+.guide_4,
+.guide_5 {
+  color: var(--shadow_6);
+  font-size: var(--size_2);
+  border-left: 3px solid rgba(0,0,0,0);
+  border-right: 3px solid rgba(0,0,0,0);
+  border-radius: 3px;
+  padding-left: 15px;
+  cursor: pointer;
+}
+.guide_1 {
+  margin-left: 0px;
+}
+.guide_2 {
+  margin-left: 10px;
+}
+.guide_3 {
+  margin-left: 20px;
+}
+.guide_4 {
+  margin-left: 30px;
+}
+.guide_5 {
+  margin-left: 40px;
+}
+.guide_active {
+  border-right: 3px solid var(--text_1);
+  border-left: 3px solid var(--text_3);
+  background-color: var(--text_1);
+}
+.post_title {
+/* 文章标题 */
+  font-size: var(--size_4);
+}
+.post_date {
+/* 文章日期 */
+  font-size: var(--size_3);
+}

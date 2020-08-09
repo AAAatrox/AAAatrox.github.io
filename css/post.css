@@ -1,0 +1,87 @@
+/* 文章样式 */
+:root {
+  --size_1: 1rem;
+  --size_2: 1.1rem;
+  --size_3: 1.2rem;
+  --size_4: 2.5rem;
+}
+embed {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 600px;
+}
+blockquote {
+  padding-left: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 2px;
+  background-color: var(--shadow_2);
+}
+strong {
+  color: var(--text_2);
+}
+em {
+  color: var(--shadow_4);
+}
+.main_box > table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.main_box > table thead tr {
+  background-color: var(--shadow_2);
+}
+.main_box > table th,
+.main_box > table td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-left: 1px solid var(--shadow_5);
+  border-right: 1px solid var(--shadow_5);
+  border-top: 1px solid var(--shadow_5);
+  border-bottom: 1px solid var(--shadow_5);
+}
+.main_box > table tr {
+  transition-duration: 0.5s;
+}
+.main_box > table tr:hover {
+  background-color: var(--shadow_3);
+}
+.main_box h1 a,
+.main_box h2 a,
+.main_box h3 a,
+.main_box h4 a,
+.main_box h5 a,
+.main_box > p a,
+.main_box ul a,
+.main_box ol a,
+.main_box blockquote a,
+.main_box table a {
+  color: var(--text_4);
+}
+.main_box h1 code,
+.main_box h2 code,
+.main_box h3 code,
+.main_box h4 code,
+.main_box h5 code,
+.main_box > p code,
+.main_box ul code,
+.main_box ol code,
+.main_box blockquote code,
+.main_box table code {
+/* 行间代码 */
+  font-family: monospace;
+  font-size: inhert;
+  word-break: break-all;
+  background-color: var(--shadow_3);
+}
+.main_box > p,
+.main_box ul,
+.main_box ol,
+.main_box blockquote,
+.main_box table {
+  font-size: var(--size_3);
+}
+figure td > pre {
+/* 代码字体大小 */
+  font-size: var(--size_1);
+}

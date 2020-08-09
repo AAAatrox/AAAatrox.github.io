@@ -1,0 +1,811 @@
+<!-- 通用模板 -->
+
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <!-- jquery -->
+  <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body onload="my_load()" ">
+
+  <div class="web_name_box">
+    
+  </div>
+  
+  <!-- 顶部菜单栏 -->
+
+<div class="menu_box shadow_box">
+  <div class="menu_item_box left" id="menu_preview">preview</div>
+  <div class="menu_item_box left" id="menu_tags">tags</div>
+  <div class="menu_item_box left" id="menu_categories">categories</div>
+
+  <div class="search_input_box left" id="search_input_box">
+    <input type="search" placeholder id="search_input" class="search_input">
+  </div>
+
+  <div class="menu_item_box right" id="menu_next">next</div>
+  
+    <div class="menu_item_box right" id="menu_guide">guide</div>
+  
+  <div class="menu_item_box right" id="menu_site">sites</div>
+</div>
+
+<div class="tag_box shadow_box" id="tag_box"></div>
+
+<div class="category_box shadow_box" id="category_box"></div>
+
+<div class="site_box shadow_box" id="site_box">
+  <span class="site_item">
+    <a href="/">home</a>
+  </span>
+  <span class="site_item">
+    <a href="/archives">archives</a>
+  </span>
+  <span class="site_item">
+    <a href="https://github.com/NiaBie">github</a>
+  </span>
+  <span class="site_item">
+    <a href="/knife">knives</a>
+  </span>
+  <span class="site_item">
+    <a href="/friends">links</a>
+  </span>
+</div>
+
+
+  <!-- 附加导航 -->
+  <div class="guide_box shadow_box" id="guide_box">
+    <div class="tag_list_box" id="tag_list_box">
+      <span class="guide_item">tags</span>
+      
+        
+      
+    </div>
+
+    <div class="line_box" id="guide_line_box"></div>
+    <style>
+      #guide_line_box {
+        width: 90%;
+      }
+    </style>
+    
+    <div class="category_list_box" id="category_list_box">
+      <span class="guide_item">categories</span>
+      
+        
+      
+    </div>
+
+    <div class="guide_list_box border_box" id="guide_list_box"></div>
+  </div>
+
+
+<div class="search_result_box shadow_box" id="search_result_box">
+  <div id="search_filter" class="search_list_box">
+    <span id="search_filter_1" class="search_item">
+      <a>only title</a>
+    </span>
+    <span id="search_filter_2" class="search_item">
+      <a>title and content</a>
+    </span>
+  </div>
+  <div id="search_result_list" class="search_result_list"></div>
+</div>
+
+
+
+<script>
+  tags_name = new Array();
+  tags_path = new Array();
+
+  ''
+    var temp = 'oj';
+    tags_name.push(temp);
+    temp = 'tags/oj/';
+    tags_path.push(temp);
+  ''
+    var temp = '洛谷';
+    tags_name.push(temp);
+    temp = 'tags/洛谷/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dfs';
+    tags_name.push(temp);
+    temp = 'tags/dfs/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dp';
+    tags_name.push(temp);
+    temp = 'tags/dp/';
+    tags_path.push(temp);
+  ''
+    var temp = 'bfs';
+    tags_name.push(temp);
+    temp = 'tags/bfs/';
+    tags_path.push(temp);
+  ''
+    var temp = '树形结构';
+    tags_name.push(temp);
+    temp = 'tags/树形结构/';
+    tags_path.push(temp);
+  ''
+    var temp = '贪心';
+    tags_name.push(temp);
+    temp = 'tags/贪心/';
+    tags_path.push(temp);
+  ''
+    var temp = '并查集';
+    tags_name.push(temp);
+    temp = 'tags/并查集/';
+    tags_path.push(temp);
+  ''
+    var temp = '匈牙利算法';
+    tags_name.push(temp);
+    temp = 'tags/匈牙利算法/';
+    tags_path.push(temp);
+  ''
+    var temp = 'tarjan';
+    tags_name.push(temp);
+    temp = 'tags/tarjan/';
+    tags_path.push(temp);
+  ''
+    var temp = 'hdoj';
+    tags_name.push(temp);
+    temp = 'tags/hdoj/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dinic';
+    tags_name.push(temp);
+    temp = 'tags/dinic/';
+    tags_path.push(temp);
+  ''
+    var temp = 'leetcode';
+    tags_name.push(temp);
+    temp = 'tags/leetcode/';
+    tags_path.push(temp);
+  ''
+    var temp = '树';
+    tags_name.push(temp);
+    temp = 'tags/树/';
+    tags_path.push(temp);
+  ''
+    var temp = 'hash表';
+    tags_name.push(temp);
+    temp = 'tags/hash表/';
+    tags_path.push(temp);
+  ''
+    var temp = '图';
+    tags_name.push(temp);
+    temp = 'tags/图/';
+    tags_path.push(temp);
+  ''
+    var temp = '二叉树';
+    tags_name.push(temp);
+    temp = 'tags/二叉树/';
+    tags_path.push(temp);
+  ''
+    var temp = 'morris';
+    tags_name.push(temp);
+    temp = 'tags/morris/';
+    tags_path.push(temp);
+  ''
+    var temp = 'cpp';
+    tags_name.push(temp);
+    temp = 'tags/cpp/';
+    tags_path.push(temp);
+  ''
+  // 因为path和name只有前缀不同,所以分别排序之后相对顺序还是一样的
+  tags_name.sort();
+  tags_path.sort();
+  for (var i = 0; i < tags_name.length; i ++)
+  {
+    $("#tag_box").append("<span class='tag_item'><a href='/" + tags_path[i] + "'>" + tags_name[i] + "</a></span>\n");
+  }
+
+
+  categories_name = new Array();
+  categories_path = new Array();
+
+  ''
+  // 因为path和name只有前缀不同,所以分别排序之后相对顺序还是一样的
+  categories_name.sort();
+  categories_path.sort();
+  for (var i = 0; i < categories_name.length; i ++)
+  {
+    $("#category_box").append("<span class='category_item'><a href='/" + categories_path[i] + "'>" + categories_name[i] + "</a></span>\n");
+  }
+</script>
+
+<script>
+  // TODO 搜索
+</script>
+  <!-- latex公式渲染 -->
+
+
+
+<script>
+  document.temp_latex = '1';// 全局变量,latex公式渲染方式
+</script>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+  console.log("mathjax rendering");
+  
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [
+        ['$','$']
+      ],
+      displayMath: [
+        ['$$', '$$']
+      ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+      noUndefined: { 
+        attributes: { 
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "10%"
+        } 
+      }
+    }
+  });
+
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub])
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/hexo-simple-theme/hexo_latex@1.0.4/mathjax/MathJax.js?config=TeX-AMS_HTML-full"></script>
+<script>
+  console.log("mathjax rendering");
+</script>
+
+
+  <!-- 文章 -->
+
+<div class="main_box border_box">
+  <span class="post_title" id="post_title">番剧参考</span>
+  <br>
+  <span class="post_date">2020-04-30</span>
+  
+  <div class="line_box" id="post_line_box"></div>
+  <style>
+    #post_line_box {
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+
+  <h1 id="已完成"><a href="#已完成" class="headerlink" title="已完成"></a>已完成</h1><table>
+<thead>
+<tr>
+<th align="center">番剧名</th>
+<th align="center">bangumi评分</th>
+<th align="center">豆瓣评分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">从零开始的异世界生活</td>
+<td align="center">7.3</td>
+<td align="center">8.2</td>
+</tr>
+<tr>
+<td align="center">为美好的世界献上祝福</td>
+<td align="center">7.5</td>
+<td align="center">8.6</td>
+</tr>
+<tr>
+<td align="center">为美好的世界献上祝福2</td>
+<td align="center">7.5</td>
+<td align="center">8.7</td>
+</tr>
+<tr>
+<td align="center">四月是你的谎言</td>
+<td align="center">8.0</td>
+<td align="center">9.0</td>
+</tr>
+<tr>
+<td align="center">约会大作战</td>
+<td align="center">6.4</td>
+<td align="center">7.0</td>
+</tr>
+<tr>
+<td align="center">约会大作战2</td>
+<td align="center">5.8</td>
+<td align="center">6.8</td>
+</tr>
+<tr>
+<td align="center">约会大作战3</td>
+<td align="center">5.0</td>
+<td align="center">6.2</td>
+</tr>
+<tr>
+<td align="center">命运石之门</td>
+<td align="center">8.6</td>
+<td align="center">9.3</td>
+</tr>
+<tr>
+<td align="center">埃罗芒阿老师</td>
+<td align="center">6.5</td>
+<td align="center">6.9</td>
+</tr>
+<tr>
+<td align="center">fate/stay night</td>
+<td align="center">7.2</td>
+<td align="center">7.8</td>
+</tr>
+<tr>
+<td align="center">刀剑神域</td>
+<td align="center">7.2</td>
+<td align="center">8.1</td>
+</tr>
+<tr>
+<td align="center">暗杀教室</td>
+<td align="center">7.2</td>
+<td align="center">8.5</td>
+</tr>
+<tr>
+<td align="center">暗杀教室2</td>
+<td align="center">7.5</td>
+<td align="center">9.1</td>
+</tr>
+<tr>
+<td align="center">某科学的超电磁炮</td>
+<td align="center">7.5</td>
+<td align="center">8.5</td>
+</tr>
+<tr>
+<td align="center">路人女主的养成方法</td>
+<td align="center">7.2</td>
+<td align="center">7.8</td>
+</tr>
+<tr>
+<td align="center">路人女主的养成方法b</td>
+<td align="center">7.2</td>
+<td align="center">8.2</td>
+</tr>
+<tr>
+<td align="center">冰菓</td>
+<td align="center">8.2</td>
+<td align="center">8.9</td>
+</tr>
+<tr>
+<td align="center">欢迎来到实力至上主义的教室</td>
+<td align="center">6.2</td>
+<td align="center">7.5</td>
+</tr>
+<tr>
+<td align="center">进击的巨人</td>
+<td align="center">7.9</td>
+<td align="center">9.1</td>
+</tr>
+<tr>
+<td align="center">小林家的龙女仆</td>
+<td align="center">7.3</td>
+<td align="center">8.7</td>
+</tr>
+<tr>
+<td align="center">我的青春恋爱物语果然有问题</td>
+<td align="center">7.6</td>
+<td align="center">8.8</td>
+</tr>
+<tr>
+<td align="center">轻音少女</td>
+<td align="center">7.9</td>
+<td align="center">8.9</td>
+</tr>
+<tr>
+<td align="center">overlord</td>
+<td align="center">7.0</td>
+<td align="center">8.2</td>
+</tr>
+<tr>
+<td align="center">overlord 2</td>
+<td align="center">6.7</td>
+<td align="center">8.0</td>
+</tr>
+<tr>
+<td align="center">overlord 3</td>
+<td align="center">6.3</td>
+<td align="center">7.6</td>
+</tr>
+<tr>
+<td align="center">异世界四重奏</td>
+<td align="center">6.8</td>
+<td align="center">8.1</td>
+</tr>
+<tr>
+<td align="center">一拳超人</td>
+<td align="center">8.1</td>
+<td align="center">9.4</td>
+</tr>
+<tr>
+<td align="center">轻音少女2</td>
+<td align="center">7.9</td>
+<td align="center">9.0</td>
+</tr>
+<tr>
+<td align="center">革命机Valvrave</td>
+<td align="center">6.4</td>
+<td align="center">7.2</td>
+</tr>
+<tr>
+<td align="center">齐木楠雄的灾难</td>
+<td align="center">7.7</td>
+<td align="center">9.4</td>
+</tr>
+<tr>
+<td align="center">齐木楠雄的灾难2</td>
+<td align="center">7.5</td>
+<td align="center">9.4</td>
+</tr>
+<tr>
+<td align="center">后街女孩</td>
+<td align="center">6.4</td>
+<td align="center">8.1</td>
+</tr>
+<tr>
+<td align="center">凉宫春日的忧郁</td>
+<td align="center">8.2</td>
+<td align="center">8.6</td>
+</tr>
+<tr>
+<td align="center">中二病也要谈恋爱</td>
+<td align="center">7.3</td>
+<td align="center">8.1</td>
+</tr>
+<tr>
+<td align="center">玉子市场</td>
+<td align="center">7.0</td>
+<td align="center">8.5</td>
+</tr>
+<tr>
+<td align="center">天使降临到了我身边!</td>
+<td align="center">7.5</td>
+<td align="center">8.4</td>
+</tr>
+<tr>
+<td align="center">紫罗兰永恒花园</td>
+<td align="center">7.1</td>
+<td align="center">8.8</td>
+</tr>
+<tr>
+<td align="center">New Game!</td>
+<td align="center">7.5</td>
+<td align="center">8.3</td>
+</tr>
+<tr>
+<td align="center">杀戮天使</td>
+<td align="center">6.3</td>
+<td align="center">7.6</td>
+</tr>
+<tr>
+<td align="center">家有女友</td>
+<td align="center">6.6</td>
+<td align="center">7.6</td>
+</tr>
+<tr>
+<td align="center">辉夜大小姐想让我告白,天才们的恋爱头脑战</td>
+<td align="center">7.8</td>
+<td align="center">9.0</td>
+</tr>
+<tr>
+<td align="center">青春猪头少年不会梦到兔女郎学姐</td>
+<td align="center">7.4</td>
+<td align="center">9.0</td>
+</tr>
+<tr>
+<td align="center">樱花庄的宠物女孩</td>
+<td align="center">7.4</td>
+<td align="center">8.3</td>
+</tr>
+<tr>
+<td align="center">狼与香辛料</td>
+<td align="center">7.8</td>
+<td align="center">8.2</td>
+</tr>
+<tr>
+<td align="center">月刊少女野崎君</td>
+<td align="center">7.9</td>
+<td align="center">9.3</td>
+</tr>
+<tr>
+<td align="center">Relife</td>
+<td align="center">7.5</td>
+<td align="center">8.7</td>
+</tr>
+<tr>
+<td align="center">街角魔族</td>
+<td align="center">7.3</td>
+<td align="center">8.5</td>
+</tr>
+</tbody></table>
+<h1 id="暂停"><a href="#暂停" class="headerlink" title="暂停"></a>暂停</h1><table>
+<thead>
+<tr>
+<th align="center">番剧名</th>
+<th align="center">bangumi评分</th>
+<th align="center">豆瓣评分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">妄想学生会</td>
+<td align="center">7.5</td>
+<td align="center">8.2</td>
+</tr>
+<tr>
+<td align="center">进击的巨人2</td>
+<td align="center">7.8</td>
+<td align="center">9.4</td>
+</tr>
+<tr>
+<td align="center">我的青春恋爱物语果然有问题 续</td>
+<td align="center">7.5</td>
+<td align="center">8.9</td>
+</tr>
+<tr>
+<td align="center">日常</td>
+<td align="center">8.3</td>
+<td align="center">9.3</td>
+</tr>
+<tr>
+<td align="center">男子高中生的日常</td>
+<td align="center">8.0</td>
+<td align="center">9.2</td>
+</tr>
+<tr>
+<td align="center">JOJO的奇妙冒险</td>
+<td align="center">8.2</td>
+<td align="center">9.1</td>
+</tr>
+<tr>
+<td align="center">我的妹妹不可能那么可爱</td>
+<td align="center">7.2</td>
+<td align="center">7.6</td>
+</tr>
+<tr>
+<td align="center">便当</td>
+<td align="center">6.9</td>
+<td align="center">7.2</td>
+</tr>
+<tr>
+<td align="center">地狱少女</td>
+<td align="center">7.3</td>
+<td align="center">7.9</td>
+</tr>
+<tr>
+<td align="center">笨蛋测验召唤兽</td>
+<td align="center">7.3</td>
+<td align="center">7.8</td>
+</tr>
+<tr>
+<td align="center">JOJO的奇妙冒险 不灭钻石</td>
+<td align="center">8.0</td>
+<td align="center">9.4</td>
+</tr>
+<tr>
+<td align="center">擅长捉弄的高木同学</td>
+<td align="center">7.3</td>
+<td align="center">9.1</td>
+</tr>
+<tr>
+<td align="center">某科学的超电磁炮S</td>
+<td align="center">7.5</td>
+<td align="center">8.7</td>
+</tr>
+<tr>
+<td align="center">在下坂本,有何贵干</td>
+<td align="center">6.4</td>
+<td align="center">8.3</td>
+</tr>
+<tr>
+<td align="center">人渣的本愿</td>
+<td align="center">6.6</td>
+<td align="center">7.5</td>
+</tr>
+<tr>
+<td align="center">lovelive</td>
+<td align="center">7.0</td>
+<td align="center">7.9</td>
+</tr>
+<tr>
+<td align="center">gosick</td>
+<td align="center">7.2</td>
+<td align="center">7.9</td>
+</tr>
+<tr>
+<td align="center">罪恶王冠</td>
+<td align="center">6.4</td>
+<td align="center">7.3</td>
+</tr>
+<tr>
+<td align="center">恋爱研究所</td>
+<td align="center">7.3</td>
+<td align="center">8.3</td>
+</tr>
+<tr>
+<td align="center">摇曳露营</td>
+<td align="center">8.2</td>
+<td align="center">9.3</td>
+</tr>
+<tr>
+<td align="center">贤惠幼妻仙狐小姐</td>
+<td align="center">6.8</td>
+<td align="center">7.5</td>
+</tr>
+<tr>
+<td align="center">龙与虎</td>
+<td align="center">8.1</td>
+<td align="center">8.7</td>
+</tr>
+<tr>
+<td align="center">此花亭奇谭</td>
+<td align="center">7.4</td>
+<td align="center">8.8</td>
+</tr>
+<tr>
+<td align="center">野良神</td>
+<td align="center">7.2</td>
+<td align="center">8.6</td>
+</tr>
+<tr>
+<td align="center">灵能百分百</td>
+<td align="center">7.8</td>
+<td align="center">9.4</td>
+</tr>
+<tr>
+<td align="center">某科学的超电磁炮T</td>
+<td align="center">7.5</td>
+<td align="center">9.3</td>
+</tr>
+<tr>
+<td align="center">这个美术部有问题</td>
+<td align="center">7.3</td>
+<td align="center">8.2</td>
+</tr>
+<tr>
+<td align="center">辉夜大小姐想让我告白,天才们的恋爱头脑战2</td>
+<td align="center">7.9</td>
+<td align="center">9.5</td>
+</tr>
+<tr>
+<td align="center">转生成为了只有乙女游戏破灭Flag的邪恶大小姐</td>
+<td align="center">7.1</td>
+<td align="center">8.8</td>
+</tr>
+</tbody></table>
+<h1 id="未开始"><a href="#未开始" class="headerlink" title="未开始"></a>未开始</h1><table>
+<thead>
+<tr>
+<th align="center">番剧名</th>
+<th align="center">bangumi评分</th>
+<th align="center">豆瓣评分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">放学后海堤日记</td>
+<td align="center">7.2</td>
+<td align="center">8.2</td>
+</tr>
+<tr>
+<td align="center">白箱</td>
+<td align="center">8.8</td>
+<td align="center">9.4</td>
+</tr>
+<tr>
+<td align="center">月色真美</td>
+<td align="center">7.9</td>
+<td align="center">9.1</td>
+</tr>
+<tr>
+<td align="center">urara迷路帖</td>
+<td align="center">6.7</td>
+<td align="center">7.4</td>
+</tr>
+<tr>
+<td align="center">隔壁的吸血鬼美眉</td>
+<td align="center">7.1</td>
+<td align="center">7.6</td>
+</tr>
+<tr>
+<td align="center">花丸幼稚园</td>
+<td align="center">7.2</td>
+<td align="center">8.3</td>
+</tr>
+<tr>
+<td align="center">飞翔的魔女</td>
+<td align="center">7.6</td>
+<td align="center">8.5</td>
+</tr>
+<tr>
+<td align="center">3月的狮子</td>
+<td align="center">8.3</td>
+<td align="center">9.2</td>
+</tr>
+<tr>
+<td align="center">少女终末旅行</td>
+<td align="center">8.0</td>
+<td align="center">9.3</td>
+</tr>
+<tr>
+<td align="center">雏子的笔记</td>
+<td align="center">6.3</td>
+<td align="center">6.5</td>
+</tr>
+<tr>
+<td align="center">少女与战车</td>
+<td align="center">7.6</td>
+<td align="center">8.4</td>
+</tr>
+<tr>
+<td align="center">只有我不存在的城市</td>
+<td align="center">7.7</td>
+<td align="center">8.1</td>
+</tr>
+<tr>
+<td align="center">学园奶爸</td>
+<td align="center">6.8</td>
+<td align="center">9.2</td>
+</tr>
+<tr>
+<td align="center">tari tari</td>
+<td align="center">7.3</td>
+<td align="center">7.9</td>
+</tr>
+<tr>
+<td align="center">花开伊吕波</td>
+<td align="center">7.6</td>
+<td align="center">8.3</td>
+</tr>
+<tr>
+<td align="center">末日时在做什么?有没有空?可以来拯救么?</td>
+<td align="center">7.7</td>
+<td align="center">8.7</td>
+</tr>
+<tr>
+<td align="center">Angel Beats!</td>
+<td align="center">7.5</td>
+<td align="center">8.0</td>
+</tr>
+</tbody></table>
+<h1 id="不会看"><a href="#不会看" class="headerlink" title="不会看"></a>不会看</h1><table>
+<thead>
+<tr>
+<th align="center">番剧名</th>
+<th align="center">bangumi评分</th>
+<th align="center">豆瓣评分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">反叛的鲁路修</td>
+<td align="center">8.3</td>
+<td align="center">9.0</td>
+</tr>
+<tr>
+<td align="center">寄生兽 生命的准则</td>
+<td align="center">7.8</td>
+<td align="center">9.1</td>
+</tr>
+</tbody></table>
+
+
+  <script src="/js/guide.js"></script>
+  <script>
+    create_guide();
+  </script>
+</div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/search.js"></script>
+  <script src="/js/highlight.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,305 @@
+<!-- 通用模板 -->
+
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <!-- jquery -->
+  <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body onload="my_load()" ">
+
+  <div class="web_name_box">
+    
+  </div>
+  
+  <!-- 顶部菜单栏 -->
+
+<div class="menu_box shadow_box">
+  <div class="menu_item_box left" id="menu_preview">preview</div>
+  <div class="menu_item_box left" id="menu_tags">tags</div>
+  <div class="menu_item_box left" id="menu_categories">categories</div>
+
+  <div class="search_input_box left" id="search_input_box">
+    <input type="search" placeholder id="search_input" class="search_input">
+  </div>
+
+  <div class="menu_item_box right" id="menu_next">next</div>
+  
+    <div class="menu_item_box right" id="menu_guide">guide</div>
+  
+  <div class="menu_item_box right" id="menu_site">sites</div>
+</div>
+
+<div class="tag_box shadow_box" id="tag_box"></div>
+
+<div class="category_box shadow_box" id="category_box"></div>
+
+<div class="site_box shadow_box" id="site_box">
+  <span class="site_item">
+    <a href="/">home</a>
+  </span>
+  <span class="site_item">
+    <a href="/archives">archives</a>
+  </span>
+  <span class="site_item">
+    <a href="https://github.com/NiaBie">github</a>
+  </span>
+  <span class="site_item">
+    <a href="/knife">knives</a>
+  </span>
+  <span class="site_item">
+    <a href="/friends">links</a>
+  </span>
+</div>
+
+
+  <!-- 附加导航 -->
+  <div class="guide_box shadow_box" id="guide_box">
+    <div class="tag_list_box" id="tag_list_box">
+      <span class="guide_item">tags</span>
+      
+        
+          <span class="tag_item">
+            <a href="/tags/洛谷/">洛谷</a>
+          </span>
+        
+      
+    </div>
+
+    <div class="line_box" id="guide_line_box"></div>
+    <style>
+      #guide_line_box {
+        width: 90%;
+      }
+    </style>
+    
+    <div class="category_list_box" id="category_list_box">
+      <span class="guide_item">categories</span>
+      
+        
+      
+    </div>
+
+    <div class="guide_list_box border_box" id="guide_list_box"></div>
+  </div>
+
+
+<div class="search_result_box shadow_box" id="search_result_box">
+  <div id="search_filter" class="search_list_box">
+    <span id="search_filter_1" class="search_item">
+      <a>only title</a>
+    </span>
+    <span id="search_filter_2" class="search_item">
+      <a>title and content</a>
+    </span>
+  </div>
+  <div id="search_result_list" class="search_result_list"></div>
+</div>
+
+
+
+<script>
+  tags_name = new Array();
+  tags_path = new Array();
+
+  ''
+    var temp = 'oj';
+    tags_name.push(temp);
+    temp = 'tags/oj/';
+    tags_path.push(temp);
+  ''
+    var temp = '洛谷';
+    tags_name.push(temp);
+    temp = 'tags/洛谷/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dfs';
+    tags_name.push(temp);
+    temp = 'tags/dfs/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dp';
+    tags_name.push(temp);
+    temp = 'tags/dp/';
+    tags_path.push(temp);
+  ''
+    var temp = 'bfs';
+    tags_name.push(temp);
+    temp = 'tags/bfs/';
+    tags_path.push(temp);
+  ''
+    var temp = '树形结构';
+    tags_name.push(temp);
+    temp = 'tags/树形结构/';
+    tags_path.push(temp);
+  ''
+    var temp = '贪心';
+    tags_name.push(temp);
+    temp = 'tags/贪心/';
+    tags_path.push(temp);
+  ''
+    var temp = '并查集';
+    tags_name.push(temp);
+    temp = 'tags/并查集/';
+    tags_path.push(temp);
+  ''
+    var temp = '匈牙利算法';
+    tags_name.push(temp);
+    temp = 'tags/匈牙利算法/';
+    tags_path.push(temp);
+  ''
+    var temp = 'tarjan';
+    tags_name.push(temp);
+    temp = 'tags/tarjan/';
+    tags_path.push(temp);
+  ''
+    var temp = 'hdoj';
+    tags_name.push(temp);
+    temp = 'tags/hdoj/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dinic';
+    tags_name.push(temp);
+    temp = 'tags/dinic/';
+    tags_path.push(temp);
+  ''
+    var temp = 'leetcode';
+    tags_name.push(temp);
+    temp = 'tags/leetcode/';
+    tags_path.push(temp);
+  ''
+    var temp = '树';
+    tags_name.push(temp);
+    temp = 'tags/树/';
+    tags_path.push(temp);
+  ''
+    var temp = 'hash表';
+    tags_name.push(temp);
+    temp = 'tags/hash表/';
+    tags_path.push(temp);
+  ''
+    var temp = '图';
+    tags_name.push(temp);
+    temp = 'tags/图/';
+    tags_path.push(temp);
+  ''
+    var temp = '二叉树';
+    tags_name.push(temp);
+    temp = 'tags/二叉树/';
+    tags_path.push(temp);
+  ''
+    var temp = 'morris';
+    tags_name.push(temp);
+    temp = 'tags/morris/';
+    tags_path.push(temp);
+  ''
+    var temp = 'cpp';
+    tags_name.push(temp);
+    temp = 'tags/cpp/';
+    tags_path.push(temp);
+  ''
+  // 因为path和name只有前缀不同,所以分别排序之后相对顺序还是一样的
+  tags_name.sort();
+  tags_path.sort();
+  for (var i = 0; i < tags_name.length; i ++)
+  {
+    $("#tag_box").append("<span class='tag_item'><a href='/" + tags_path[i] + "'>" + tags_name[i] + "</a></span>\n");
+  }
+
+
+  categories_name = new Array();
+  categories_path = new Array();
+
+  ''
+  // 因为path和name只有前缀不同,所以分别排序之后相对顺序还是一样的
+  categories_name.sort();
+  categories_path.sort();
+  for (var i = 0; i < categories_name.length; i ++)
+  {
+    $("#category_box").append("<span class='category_item'><a href='/" + categories_path[i] + "'>" + categories_name[i] + "</a></span>\n");
+  }
+</script>
+
+<script>
+  // TODO 搜索
+</script>
+  <!-- latex公式渲染 -->
+
+
+
+<script>
+  document.temp_latex = '1';// 全局变量,latex公式渲染方式
+</script>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+  console.log("mathjax rendering");
+  
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [
+        ['$','$']
+      ],
+      displayMath: [
+        ['$$', '$$']
+      ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+      noUndefined: { 
+        attributes: { 
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "10%"
+        } 
+      }
+    }
+  });
+
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub])
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/hexo-simple-theme/hexo_latex@1.0.4/mathjax/MathJax.js?config=TeX-AMS_HTML-full"></script>
+<script>
+  console.log("mathjax rendering");
+</script>
+
+
+  <!-- 文章 -->
+
+<div class="main_box border_box">
+  <span class="post_title" id="post_title">P1113</span>
+  <br>
+  <span class="post_date">2020-02-05</span>
+  
+  <div class="line_box" id="post_line_box"></div>
+  <style>
+    #post_line_box {
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+
+  <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>因为每个任务$k$的准备工作只可能为$1,2…k-1$,所以最长时间取其中最大值即可</p>
+
+
+  <script src="/js/guide.js"></script>
+  <script>
+    create_guide();
+  </script>
+</div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/search.js"></script>
+  <script src="/js/highlight.js"></script>
+
+</body>
+
+</html>

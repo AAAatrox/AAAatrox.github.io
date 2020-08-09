@@ -1,0 +1,640 @@
+<!-- 通用模板 -->
+
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <!-- jquery -->
+  <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body onload="my_load()" ">
+
+  <div class="web_name_box">
+    
+  </div>
+  
+  <!-- 顶部菜单栏 -->
+
+<div class="menu_box shadow_box">
+  <div class="menu_item_box left" id="menu_preview">preview</div>
+  <div class="menu_item_box left" id="menu_tags">tags</div>
+  <div class="menu_item_box left" id="menu_categories">categories</div>
+
+  <div class="search_input_box left" id="search_input_box">
+    <input type="search" placeholder id="search_input" class="search_input">
+  </div>
+
+  <div class="menu_item_box right" id="menu_next">next</div>
+  
+  <div class="menu_item_box right" id="menu_site">sites</div>
+</div>
+
+<div class="tag_box shadow_box" id="tag_box"></div>
+
+<div class="category_box shadow_box" id="category_box"></div>
+
+<div class="site_box shadow_box" id="site_box">
+  <span class="site_item">
+    <a href="/">home</a>
+  </span>
+  <span class="site_item">
+    <a href="/archives">archives</a>
+  </span>
+  <span class="site_item">
+    <a href="https://github.com/NiaBie">github</a>
+  </span>
+  <span class="site_item">
+    <a href="/knife">knives</a>
+  </span>
+  <span class="site_item">
+    <a href="/friends">links</a>
+  </span>
+</div>
+
+
+
+<div class="search_result_box shadow_box" id="search_result_box">
+  <div id="search_filter" class="search_list_box">
+    <span id="search_filter_1" class="search_item">
+      <a>only title</a>
+    </span>
+    <span id="search_filter_2" class="search_item">
+      <a>title and content</a>
+    </span>
+  </div>
+  <div id="search_result_list" class="search_result_list"></div>
+</div>
+
+
+  <!-- 不是文章页 -->
+
+  
+
+
+
+<script>
+  tags_name = new Array();
+  tags_path = new Array();
+
+  ''
+    var temp = 'oj';
+    tags_name.push(temp);
+    temp = 'tags/oj/';
+    tags_path.push(temp);
+  ''
+    var temp = '洛谷';
+    tags_name.push(temp);
+    temp = 'tags/洛谷/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dfs';
+    tags_name.push(temp);
+    temp = 'tags/dfs/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dp';
+    tags_name.push(temp);
+    temp = 'tags/dp/';
+    tags_path.push(temp);
+  ''
+    var temp = 'bfs';
+    tags_name.push(temp);
+    temp = 'tags/bfs/';
+    tags_path.push(temp);
+  ''
+    var temp = '树形结构';
+    tags_name.push(temp);
+    temp = 'tags/树形结构/';
+    tags_path.push(temp);
+  ''
+    var temp = '贪心';
+    tags_name.push(temp);
+    temp = 'tags/贪心/';
+    tags_path.push(temp);
+  ''
+    var temp = '并查集';
+    tags_name.push(temp);
+    temp = 'tags/并查集/';
+    tags_path.push(temp);
+  ''
+    var temp = '匈牙利算法';
+    tags_name.push(temp);
+    temp = 'tags/匈牙利算法/';
+    tags_path.push(temp);
+  ''
+    var temp = 'tarjan';
+    tags_name.push(temp);
+    temp = 'tags/tarjan/';
+    tags_path.push(temp);
+  ''
+    var temp = 'hdoj';
+    tags_name.push(temp);
+    temp = 'tags/hdoj/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dinic';
+    tags_name.push(temp);
+    temp = 'tags/dinic/';
+    tags_path.push(temp);
+  ''
+    var temp = 'leetcode';
+    tags_name.push(temp);
+    temp = 'tags/leetcode/';
+    tags_path.push(temp);
+  ''
+    var temp = '树';
+    tags_name.push(temp);
+    temp = 'tags/树/';
+    tags_path.push(temp);
+  ''
+    var temp = 'hash表';
+    tags_name.push(temp);
+    temp = 'tags/hash表/';
+    tags_path.push(temp);
+  ''
+    var temp = '图';
+    tags_name.push(temp);
+    temp = 'tags/图/';
+    tags_path.push(temp);
+  ''
+    var temp = '二叉树';
+    tags_name.push(temp);
+    temp = 'tags/二叉树/';
+    tags_path.push(temp);
+  ''
+    var temp = 'morris';
+    tags_name.push(temp);
+    temp = 'tags/morris/';
+    tags_path.push(temp);
+  ''
+    var temp = 'cpp';
+    tags_name.push(temp);
+    temp = 'tags/cpp/';
+    tags_path.push(temp);
+  ''
+  // 因为path和name只有前缀不同,所以分别排序之后相对顺序还是一样的
+  tags_name.sort();
+  tags_path.sort();
+  for (var i = 0; i < tags_name.length; i ++)
+  {
+    $("#tag_box").append("<span class='tag_item'><a href='/" + tags_path[i] + "'>" + tags_name[i] + "</a></span>\n");
+  }
+
+
+  categories_name = new Array();
+  categories_path = new Array();
+
+  ''
+  // 因为path和name只有前缀不同,所以分别排序之后相对顺序还是一样的
+  categories_name.sort();
+  categories_path.sort();
+  for (var i = 0; i < categories_name.length; i ++)
+  {
+    $("#category_box").append("<span class='category_item'><a href='/" + categories_path[i] + "'>" + categories_name[i] + "</a></span>\n");
+  }
+</script>
+
+<script>
+  // TODO 搜索
+</script>
+  <!-- latex公式渲染 -->
+
+
+
+<script>
+  document.temp_latex = '1';// 全局变量,latex公式渲染方式
+</script>
+
+
+<!-- mathjax -->
+<script type="text/x-mathjax-config">
+  console.log("mathjax rendering");
+  
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [
+        ['$','$']
+      ],
+      displayMath: [
+        ['$$', '$$']
+      ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+      noUndefined: { 
+        attributes: { 
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "10%"
+        } 
+      }
+    }
+  });
+
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub])
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/hexo-simple-theme/hexo_latex@1.0.4/mathjax/MathJax.js?config=TeX-AMS_HTML-full"></script>
+<script>
+  console.log("mathjax rendering");
+</script>
+
+
+  <!-- 主页 -->
+
+<!-- 文章列表 -->
+
+<div class="main_box border_box">
+
+  
+
+  
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">1.</span>
+        <a href="/2020/04/30/番剧参考/" class="archive_title">
+          番剧参考
+        </a>
+        <span class="archive_date">2020-04-30</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">2.</span>
+        <a href="/2020/03/31/hdoj2883/" class="archive_title">
+          hdoj2883
+        </a>
+        <span class="archive_date">2020-03-31</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">3.</span>
+        <a href="/2020/03/31/hdoj3572/" class="archive_title">
+          hdoj3572
+        </a>
+        <span class="archive_date">2020-03-31</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">4.</span>
+        <a href="/2020/02/19/hdoj2435/" class="archive_title">
+          hdoj2435
+        </a>
+        <span class="archive_date">2020-02-19</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">5.</span>
+        <a href="/2020/02/19/hdoj4280/" class="archive_title">
+          hdoj4280
+        </a>
+        <span class="archive_date">2020-02-19</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">6.</span>
+        <a href="/2020/02/19/P1640/" class="archive_title">
+          P1640
+        </a>
+        <span class="archive_date">2020-02-19</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">7.</span>
+        <a href="/2020/02/11/P2341/" class="archive_title">
+          P2341
+        </a>
+        <span class="archive_date">2020-02-11</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">8.</span>
+        <a href="/2020/02/08/P1525/" class="archive_title">
+          P1525
+        </a>
+        <span class="archive_date">2020-02-08</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">9.</span>
+        <a href="/2020/02/06/P1268/" class="archive_title">
+          P1268
+        </a>
+        <span class="archive_date">2020-02-06</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">10.</span>
+        <a href="/2020/02/05/P1113/" class="archive_title">
+          P1113
+        </a>
+        <span class="archive_date">2020-02-05</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">11.</span>
+        <a href="/2020/01/27/leetcode1293/" class="archive_title">
+          leetcode1293
+        </a>
+        <span class="archive_date">2020-01-27</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">12.</span>
+        <a href="/2020/01/26/leetcode124/" class="archive_title">
+          leetcode124
+        </a>
+        <span class="archive_date">2020-01-26</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">13.</span>
+        <a href="/2020/01/26/leetcode765/" class="archive_title">
+          leetcode765
+        </a>
+        <span class="archive_date">2020-01-26</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">14.</span>
+        <a href="/2020/01/25/补番/" class="archive_title">
+          补番
+        </a>
+        <span class="archive_date">2020-01-25</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">15.</span>
+        <a href="/2020/01/24/leetcode128/" class="archive_title">
+          leetcode128
+        </a>
+        <span class="archive_date">2020-01-24</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">16.</span>
+        <a href="/2020/01/23/leetcode99/" class="archive_title">
+          leetcode99
+        </a>
+        <span class="archive_date">2020-01-23</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">17.</span>
+        <a href="/2020/01/13/oj/" class="archive_title">
+          oj
+        </a>
+        <span class="archive_date">2020-01-13</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">18.</span>
+        <a href="/2019/08/31/test/" class="archive_title">
+          refresh
+        </a>
+        <span class="archive_date">2019-08-31</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">19.</span>
+        <a href="/2019/02/08/P1280/" class="archive_title">
+          P1280
+        </a>
+        <span class="archive_date">2019-02-08</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">20.</span>
+        <a href="/2019/02/05/P1091/" class="archive_title">
+          P1091
+        </a>
+        <span class="archive_date">2019-02-05</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">21.</span>
+        <a href="/2019/01/31/P1020/" class="archive_title">
+          P1020
+        </a>
+        <span class="archive_date">2019-01-31</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">22.</span>
+        <a href="/2019/01/31/P1087/" class="archive_title">
+          P1087
+        </a>
+        <span class="archive_date">2019-01-31</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">23.</span>
+        <a href="/2019/01/29/P1443/" class="archive_title">
+          P1443
+        </a>
+        <span class="archive_date">2019-01-29</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">24.</span>
+        <a href="/2019/01/28/P1126/" class="archive_title">
+          P1126
+        </a>
+        <span class="archive_date">2019-01-28</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">25.</span>
+        <a href="/2019/01/27/P1032/" class="archive_title">
+          P1032
+        </a>
+        <span class="archive_date">2019-01-27</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">26.</span>
+        <a href="/2019/01/24/P1141/" class="archive_title">
+          P1141
+        </a>
+        <span class="archive_date">2019-01-24</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">27.</span>
+        <a href="/2019/01/24/P1040/" class="archive_title">
+          P1040
+        </a>
+        <span class="archive_date">2019-01-24</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">28.</span>
+        <a href="/2019/01/23/P1101/" class="archive_title">
+          P1101
+        </a>
+        <span class="archive_date">2019-01-23</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">29.</span>
+        <a href="/2019/01/23/P1019/" class="archive_title">
+          P1019
+        </a>
+        <span class="archive_date">2019-01-23</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">30.</span>
+        <a href="/2019/01/22/P1605/" class="archive_title">
+          P1605
+        </a>
+        <span class="archive_date">2019-01-22</span>
+        <br>
+      </div>
+              
+    <!-- 单个文章 -->
+
+      
+      <div class="post_box">
+        <span class="archive_index">31.</span>
+        <a href="/2019/01/22/P1219/" class="archive_title">
+          P1219
+        </a>
+        <span class="archive_date">2019-01-22</span>
+        <br>
+      </div>
+              
+    
+  
+
+</div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/search.js"></script>
+  <script src="/js/highlight.js"></script>
+
+</body>
+
+</html>

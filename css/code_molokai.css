@@ -1,0 +1,181 @@
+/* 代码部分 */
+:root {
+  --molokai_red: #f91a72;
+  --molokai_yellow: #e7ef74;
+  --molokai_blue: #67d8ef;
+  --molokai_green: #a6e240;
+  --molokai_white: #f8f8f2;
+  --molokai_purple: #ac80ff;
+  --molokai_black: #282923;
+  --molokai_grey: #90918b;
+}
+figure.highlight {
+/* 代码框(className == highlight的figure) */
+  border: 1px solid var(--shadow_grey);
+  border-radius: 3px;
+  background-color: var(--molokai_black);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 35px;
+  margin-left: 0px;
+  margin-right: 0px;
+  font-size: 13px;
+  position: relative;
+/* 一定要用relative */
+  overflow-x: hidden;
+/* 防止溢出 */
+  overflow-y: hidden;
+/* 显示语言类型 */
+}
+figure.highlight span {
+  font-family: monospace;
+}
+figure.highlight::before {
+  background: #21252b;
+  color: #fff;
+  content: attr(language_type);
+  text-indent: 15px;
+  line-height: 38px;
+  font-size: 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 38px;
+  width: 100%;
+/* 会溢出 */
+  font-family: monospace;
+  font-weight: bold;
+  padding: 0px 80px;
+}
+figure.highlight::after {
+  content: "";
+  position: absolute;
+  margin-top: 13px;
+  width: 12px;
+  height: 12px;
+  top: 0;
+  left: 20px;
+  border-radius: 50%;
+  background: #fc625d;
+  box-shadow: 20px 0px #fdbc40, 40px 0px #35cd4b;
+/* 后两个圆是第一个的影子 */
+}
+table tbody tr td > pre {
+/* 强制换行必须要修改pre */
+  word-break: break-all;
+  white-space: pre-wrap;
+/* css3.0 */
+  white-space: -moz-pre-wrap;
+/* Firefox */
+  white-space: -pre-wrap;
+/* Opera 4-6 */
+  white-space: -o-pre-wrap;
+/* Opera 7 */
+  word-wrap: break-word;
+}
+.main_box > figure.highlight::-webkit-scrollbar-thumb {
+  background-color: var(--molokai_grey);
+  border-radius: 3px;
+}
+.main_box > figure.highlight::-webkit-scrollbar {
+  background-color: #383934;
+  height: 8px;
+}
+/* 加了显示代码类型之后,这两个就没有用了 */
+.code_string {
+/* 字符串 */
+  color: var(--molokai_yellow);
+}
+.code_comment {
+/* 注释 */
+  color: var(--text_grey);
+}
+.code_keyword {
+/* 关键词: void, enum */
+  color: var(--molokai_blue);
+  font-style: italic;
+}
+.code_keyword1 {
+/* 关键词1: for, while, case, const */
+  color: var(--molokai_red);
+}
+.code_attribute {
+/* css属性? */
+  color: var(--molokai_blue);
+}
+.code_built_in {
+/* 内置函数,printf之类 */
+  color: var(--molokai_blue);
+}
+.code_attr {
+/* html属性, json tag */
+  color: var(--molokai_yellow);
+}
+.code_attr1 {
+/* html属性 tag */
+  color: var(--molokai_green);
+}
+.code_name {
+/* html标签 */
+  color: var(--molokai_red);
+}
+.code_number {
+/* 数字 */
+  color: var(--molokai_purple);
+}
+.code_title {
+/* 函数名 */
+  color: var(--molokai_green);
+}
+.code_params {
+/* 函数参数(整行) */
+  color: var(--molokai_white);
+}
+.code_selector-tag {
+/* css tag */
+  color: var(--molokai_red);
+}
+.code_selector-class {
+/* css class */
+  color: var(--molokai_green);
+}
+.code_selector-id {
+/* css id */
+  color: var(--molokai_green);
+}
+.code_selector-pseudo {
+/* css 浏览器内置工具 */
+  color: var(--molokai_green);
+}
+.code_regexp {
+/* 正则表达式 */
+  color: var(--molokai_yellow);
+}
+.code_meta-keyword {
+/* #include */
+  color: var(--molokai_red);
+}
+.code_meta-string {
+/* include <> */
+  color: var(--molokai_yellow);
+}
+.code_symbol {
+/* vimscript按键 */
+  color: var(--molokai_red);
+}
+.code_section {
+/* makefile命令: run gdb... */
+  color: var(--molokai_green);
+}
+.code_variable {
+/* makefile变量: $(par) */
+  color: var(--molokai_yellow);
+}
+.code_strong {
+/* markdown强调 */
+  font-weight: bold;
+}
+.line {
+/* 所有普通字符 */
+  color: var(--molokai_white);
+}
