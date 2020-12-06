@@ -132,14 +132,14 @@
     temp = 'tags/dfs/';
     tags_path.push(temp);
   ''
-    var temp = 'dp';
-    tags_name.push(temp);
-    temp = 'tags/dp/';
-    tags_path.push(temp);
-  ''
     var temp = 'bfs';
     tags_name.push(temp);
     temp = 'tags/bfs/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dp';
+    tags_name.push(temp);
+    temp = 'tags/dp/';
     tags_path.push(temp);
   ''
     var temp = '树形结构';
@@ -182,14 +182,14 @@
     temp = 'tags/leetcode/';
     tags_path.push(temp);
   ''
-    var temp = '树';
-    tags_name.push(temp);
-    temp = 'tags/树/';
-    tags_path.push(temp);
-  ''
     var temp = 'hash表';
     tags_name.push(temp);
     temp = 'tags/hash表/';
+    tags_path.push(temp);
+  ''
+    var temp = '树';
+    tags_name.push(temp);
+    temp = 'tags/树/';
     tags_path.push(temp);
   ''
     var temp = '图';
@@ -282,20 +282,21 @@
 
   <!-- 文章 -->
 
-<div class="main_box border_box">
-  <span class="post_title" id="post_title">leetcode128</span>
-  <br>
-  <span class="post_date">2020-01-24</span>
+<div class="main_container">
+  <div class="main_box border_box">
+    <span class="post_title" id="post_title">leetcode128</span>
+    <br>
+    <span class="post_date">2020-01-24</span>
+    
+    <div class="line_box" id="post_line_box"></div>
+    <style>
+      #post_line_box {
+        width: 100%;
+        margin-top: 10px;
+      }
+    </style>
   
-  <div class="line_box" id="post_line_box"></div>
-  <style>
-    #post_line_box {
-      width: 100%;
-      margin-top: 10px;
-    }
-  </style>
-
-  <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h1 id="c-hash表"><a href="#c-hash表" class="headerlink" title="c++ hash表"></a>c++ hash表</h1><ul>
+    <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h1 id="c-hash表"><a href="#c-hash表" class="headerlink" title="c++ hash表"></a>c++ hash表</h1><ul>
 <li><code>unordered_map</code></li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GREEN(format, ...) \</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"\033[1;32m"</span> format <span class="string">"\33[0m\n"</span>, ## __VA_ARGS__)</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; my_map;</span><br><span class="line">  pair&lt;int, int&gt; my_pair (2147483647, 1);</span><br><span class="line">  my_map.insert(my_pair);</span><br><span class="line">  <span class="keyword">if</span> (my_map.count(<span class="number">2147483647</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    GREEN(<span class="string">"%d"</span>, my_map[<span class="number">2147483647</span>]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -309,11 +310,12 @@
 <li>判重</li>
 </ul>
 
-
-  <script src="/js/guide.js"></script>
-  <script>
-    create_guide();
-  </script>
+  
+    <script src="/js/guide.js"></script>
+    <script>
+      create_guide();
+    </script>
+  </div>
 </div>
 
   <script src="/js/main.js"></script>

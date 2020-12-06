@@ -132,14 +132,14 @@
     temp = 'tags/dfs/';
     tags_path.push(temp);
   ''
-    var temp = 'dp';
-    tags_name.push(temp);
-    temp = 'tags/dp/';
-    tags_path.push(temp);
-  ''
     var temp = 'bfs';
     tags_name.push(temp);
     temp = 'tags/bfs/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dp';
+    tags_name.push(temp);
+    temp = 'tags/dp/';
     tags_path.push(temp);
   ''
     var temp = '树形结构';
@@ -182,14 +182,14 @@
     temp = 'tags/leetcode/';
     tags_path.push(temp);
   ''
-    var temp = '树';
-    tags_name.push(temp);
-    temp = 'tags/树/';
-    tags_path.push(temp);
-  ''
     var temp = 'hash表';
     tags_name.push(temp);
     temp = 'tags/hash表/';
+    tags_path.push(temp);
+  ''
+    var temp = '树';
+    tags_name.push(temp);
+    temp = 'tags/树/';
     tags_path.push(temp);
   ''
     var temp = '图';
@@ -282,29 +282,31 @@
 
   <!-- 文章 -->
 
-<div class="main_box border_box">
-  <span class="post_title" id="post_title">P1640</span>
-  <br>
-  <span class="post_date">2020-02-19</span>
+<div class="main_container">
+  <div class="main_box border_box">
+    <span class="post_title" id="post_title">P1640</span>
+    <br>
+    <span class="post_date">2020-02-19</span>
+    
+    <div class="line_box" id="post_line_box"></div>
+    <style>
+      #post_line_box {
+        width: 100%;
+        margin-top: 10px;
+      }
+    </style>
   
-  <div class="line_box" id="post_line_box"></div>
-  <style>
-    #post_line_box {
-      width: 100%;
-      margin-top: 10px;
-    }
-  </style>
-
-  <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="二分图匹配"><a href="#二分图匹配" class="headerlink" title="二分图匹配"></a>二分图匹配</h2><p>不推荐,速度较慢</p>
+    <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="二分图匹配"><a href="#二分图匹配" class="headerlink" title="二分图匹配"></a>二分图匹配</h2><p>不推荐,速度较慢</p>
 <p>在每次寻找增广路时不要使用<code>memset</code>来清除dfs标记(会TLE),直接使用时间戳来判断是否访问过</p>
 <h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><p><strong>TODO</strong></p>
 <h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p><strong>TODO</strong></p>
 
-
-  <script src="/js/guide.js"></script>
-  <script>
-    create_guide();
-  </script>
+  
+    <script src="/js/guide.js"></script>
+    <script>
+      create_guide();
+    </script>
+  </div>
 </div>
 
   <script src="/js/main.js"></script>

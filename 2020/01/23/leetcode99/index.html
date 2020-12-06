@@ -132,14 +132,14 @@
     temp = 'tags/dfs/';
     tags_path.push(temp);
   ''
-    var temp = 'dp';
-    tags_name.push(temp);
-    temp = 'tags/dp/';
-    tags_path.push(temp);
-  ''
     var temp = 'bfs';
     tags_name.push(temp);
     temp = 'tags/bfs/';
+    tags_path.push(temp);
+  ''
+    var temp = 'dp';
+    tags_name.push(temp);
+    temp = 'tags/dp/';
     tags_path.push(temp);
   ''
     var temp = '树形结构';
@@ -182,14 +182,14 @@
     temp = 'tags/leetcode/';
     tags_path.push(temp);
   ''
-    var temp = '树';
-    tags_name.push(temp);
-    temp = 'tags/树/';
-    tags_path.push(temp);
-  ''
     var temp = 'hash表';
     tags_name.push(temp);
     temp = 'tags/hash表/';
+    tags_path.push(temp);
+  ''
+    var temp = '树';
+    tags_name.push(temp);
+    temp = 'tags/树/';
     tags_path.push(temp);
   ''
     var temp = '图';
@@ -282,20 +282,21 @@
 
   <!-- 文章 -->
 
-<div class="main_box border_box">
-  <span class="post_title" id="post_title">leetcode99</span>
-  <br>
-  <span class="post_date">2020-01-23</span>
+<div class="main_container">
+  <div class="main_box border_box">
+    <span class="post_title" id="post_title">leetcode99</span>
+    <br>
+    <span class="post_date">2020-01-23</span>
+    
+    <div class="line_box" id="post_line_box"></div>
+    <style>
+      #post_line_box {
+        width: 100%;
+        margin-top: 10px;
+      }
+    </style>
   
-  <div class="line_box" id="post_line_box"></div>
-  <style>
-    #post_line_box {
-      width: 100%;
-      margin-top: 10px;
-    }
-  </style>
-
-  <h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p><a href="https://www.cnblogs.com/grandyang/p/4298069.html" target="_blank" rel="noopener">参考:cnblog</a></p>
+    <h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p><a href="https://www.cnblogs.com/grandyang/p/4298069.html" target="_blank" rel="noopener">参考:cnblog</a></p>
 <p>中序遍历+排序</p>
 <h1 id="Morris算法"><a href="#Morris算法" class="headerlink" title="Morris算法"></a>Morris算法</h1><p><a href="https://www.cnblogs.com/AnnieKim/archive/2013/06/15/morristraversal.html" target="_blank" rel="noopener">参考:cnblog</a></p>
 <ol>
@@ -308,11 +309,12 @@
 <li>重复1,2直到<code>cur == NULL</code></li>
 </ol>
 
-
-  <script src="/js/guide.js"></script>
-  <script>
-    create_guide();
-  </script>
+  
+    <script src="/js/guide.js"></script>
+    <script>
+      create_guide();
+    </script>
+  </div>
 </div>
 
   <script src="/js/main.js"></script>

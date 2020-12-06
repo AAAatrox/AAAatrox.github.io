@@ -6,6 +6,9 @@ body {
   padding: 0px;
   background-image: url("https://cdn.jsdelivr.net/gh/hexo-simple-theme/hexo_bg@1.0.1/sun.png");
 }
+.main_container {
+  padding-bottom: 100px;
+}
 .left {
   float: left;
 }
@@ -48,7 +51,6 @@ body {
 /* 主体 */
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 100px;
   width: 80%;
   max-width: 900px;
   padding: 50px;
